@@ -1,0 +1,277 @@
+/* Estilos generales */
+.marca-detail-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, var(--color-bg-secondary), var(--color-bg));
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+}
+
+.marca-logo {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.marca-logo:hover {
+  transform: scale(1.05);
+}
+
+.marca-description {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.marca-description h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.marca-description p {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Sección de categorías */
+.categorias-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+}
+
+.categorias-section h2 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.categorias-section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-accent);
+  margin: 1rem auto;
+  border-radius: 2px;
+}
+
+.categorias-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.categoria-card {
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--color-border);
+}
+
+.categoria-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.categoria-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.categoria-info {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.categoria-info h3 {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.categoria-info button {
+  background-color: var(--color-accent);
+  color: var(--color-bg-secondary);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.categoria-info button:hover {
+  background-color: #7ba31d;
+  transform: translateY(-2px);
+}
+
+/* Botón de productos */
+.ver-productos-btn {
+  background-color: var(--color-primary);
+  color: var(--color-bg-secondary);
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 2rem auto;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ver-productos-btn:hover {
+  background-color: #333399;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(64, 68, 172, 0.2);
+}
+
+/* Estados de carga y error */
+.loading-container,
+.error-message {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--color-bg-secondary);
+  color: var(--color-text);
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 600px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #94c424;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.retry-button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background: var(--color-primary);
+  color: var(--color-bg-secondary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: #333399;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .marca-detail-container {
+    padding: 1rem;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  .marca-logo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .marca-description h1 {
+    font-size: 2rem;
+  }
+
+  .categorias-list {
+    grid-template-columns: 1fr;
+  }
+
+  .categoria-card {
+    margin: 1rem 0;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.marca-detail-container {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Estilos para los productos */
+.productos-section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: var(--color-bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--color-border);
+}

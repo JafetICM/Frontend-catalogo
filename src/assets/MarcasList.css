@@ -1,0 +1,26 @@
+/* Estilo para la lista de marcas */
+.marcas-container {
+  padding: 2rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.marcas-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Cambiar el tamaño de la columna */
+  gap: 1rem;
+  justify-items: center;
+}
+
+.marca-item {
+  text-align: center;
+  color: var(--color-text);
+}
+
+.marca-logo {
+  width: 100%; /* Asegura que la imagen ocupe todo el contenedor disponible */
+  max-width: 150px; /* Establece un tamaño máximo para evitar que se estiren demasiado */
+  height: auto; /* Mantén la proporción de la imagen */
+  object-fit: contain; /* Ajusta la imagen para que se vea completamente */
+  margin: 0 auto; /* Centra la imagen dentro de su contenedor */
+}

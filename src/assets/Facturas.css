@@ -1,0 +1,312 @@
+.facturas-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.facturas-header {
+  margin-bottom: 30px;
+}
+
+.titulo-principal {
+  font-size: 2rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.controles-facturas {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.filtros-superiores {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filtro-anio, .descarga-facturas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.descarga-facturas {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.descarga-facturas label {
+  font-weight: 600;
+  color: #555;
+  white-space: nowrap;
+}
+
+.select-mes {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  font-size: 14px;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.select-mes:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0,7,255,0.1);
+}
+
+.btn-descargar {
+  padding: 8px 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.btn-descargar:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.btn-descargar:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-descargar i {
+  font-size: 14px;
+}
+
+.filtro-anio label, .descarga-facturas label {
+  font-weight: 600;
+  color: #555;
+}
+
+.filtro-anio select, .descarga-facturas select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.btn-descargar {
+  padding: 8px 12px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.busqueda-facturas {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  position: relative;
+  max-width: 400px;
+}
+
+.search-input i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.botones-accion {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-subir-pago, .btn-reporte {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-subir-pago {
+  background: #007bff;
+  color: white;
+}
+
+.btn-reporte {
+  background: #28a745;
+  color: white;
+}
+
+.btn-reporte:hover:not(:disabled) {
+  background: #218838;
+}
+
+.btn-reporte:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.tabla-facturas {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.loading, .no-facturas {
+  padding: 40px;
+  text-align: center;
+}
+
+.no-facturas-content i {
+  font-size: 3rem;
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.facturas-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.facturas-table th {
+  background: #f8f9fa;
+  padding: 15px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.facturas-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.factura-row:hover {
+  background: #f8f9fa;
+}
+
+.factura-numero a, .folio-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.factura-numero a:hover, .folio-link:hover {
+  text-decoration: underline;
+}
+
+.guias a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.estatus-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+ .estatus-badge.liberada {
+   background: #d4edda;
+   color: #155724;
+ }
+
+ .estatus-badge.activa {
+   background: #d4edda;
+   color: #155724;
+ }
+
+ .estatus-badge.pendiente {
+   background: #fff3cd;
+   color: #856404;
+ }
+
+.paginacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px 0;
+}
+
+.paginacion-controles {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-pagina {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-pagina:hover:not(:disabled) {
+  background: #f8f9fa;
+}
+
+.btn-pagina.activa {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.btn-pagina:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ultima-actualizacion {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.link-actualizar {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link-actualizar:hover {
+  text-decoration: underline;
+}
