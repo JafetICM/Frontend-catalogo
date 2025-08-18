@@ -92,7 +92,7 @@ export default {
 
     const loadMarca = async (id) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/marcas/${id}`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/marcas/${id}`);
         if (!response.ok) throw new Error('Error al obtener la marca');
         marca.value = await response.json();
       } catch (err) {
@@ -102,7 +102,7 @@ export default {
 
     const loadProductos = async (id) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/marcas/${id}/productos`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/marcas/${id}/productos`);
         if (!response.ok) throw new Error('Error al obtener los productos');
         const data = await response.json();
         productos.value = data.productos || [];

@@ -70,7 +70,7 @@ export default {
       productosRelacionados.value = [];
 
       try {
-        const response = await fetch(`http://127.0.0.1:8000/productos/buscar?query=${searchQuery.value}`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/productos/buscar?query=${searchQuery.value}`);
         if (!response.ok) {
           throw new Error('Error al obtener los productos');
         }

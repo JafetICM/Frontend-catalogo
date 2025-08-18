@@ -316,7 +316,7 @@ export default {
           }
         }
         
-        const url = new URL('http://127.0.0.1:8000/productos');
+        const url = new URL('https://backend-laravel-o66e6.ondigitalocean.app/productos');
         Object.keys(query).forEach(key => url.searchParams.append(key, query[key]));
         
         const response = await fetch(url);

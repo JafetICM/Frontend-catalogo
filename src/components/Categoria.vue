@@ -84,7 +84,7 @@ export default {
     // Obtener las categorías desde la API
     onMounted(async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/categorias-syscom');
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/categorias-syscom');
         const data = await response.json();
         categorias.value = data;
       } catch (err) {
@@ -100,13 +100,13 @@ export default {
     const setActiveCategory = async (categoria) => {
       activeCategory.value = categoria;
       try {
-          const responseSubcategorias = await fetch(`http://127.0.0.1:8000/categorias-syscom/${categoria.id}`);
+          const responseSubcategorias = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/categorias-syscom/${categoria.id}`);
           if (!responseSubcategorias.ok) throw new Error('Error al obtener subcategorías');
           const dataSubcategorias = await responseSubcategorias.json();
           activeCategory.value.subcategorias = dataSubcategorias.subcategorias || [];
 
           // Filtrar productos por categoría (usando el ID de la categoría)
-          const responseProductos = await fetch(`http://127.0.0.1:8000/productos?categoria_id=${categoria.id}`);
+          const responseProductos = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/productos?categoria_id=${categoria.id}`);
           if (!responseProductos.ok) throw new Error('Error al obtener productos');
           const productosData = await responseProductos.json();
           

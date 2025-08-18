@@ -44,10 +44,7 @@
           </div>
         </div>
         <div class="factura-actions">
-          <button class="btn-cotizacion-excel" @click="generarCotizacionExcel" :disabled="generandoCotizacion">
-            <i class="fas fa-file-excel"></i>
-            {{ generandoCotizacion ? 'Generando Excel...' : 'Cotización Excel' }}
-          </button>
+          
         </div>
       </div>
 
@@ -364,8 +361,8 @@ export default {
       
       try {
         const folio = this.$route.params.id;
-        const encodedFolio = encodeURIComponent(folio);
-        const response = await fetch(`http://127.0.0.1:8000/facturas/${encodedFolio}`);
+        // El folio ya viene codificado desde el router, no necesitamos codificarlo de nuevo
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/facturas/${folio}`);
         const data = await response.json();
         
         if (data.error) {
@@ -470,9 +467,8 @@ export default {
       this.generandoPDF = true;
       try {
         const folio = this.$route.params.id;
-        const encodedFolio = encodeURIComponent(folio);
         
-        const response = await fetch(`http://127.0.0.1:8000/facturas/${encodedFolio}/pdf`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/facturas/${folio}/pdf`);
         
         if (response.ok) {
           // Obtener el tipo de contenido
@@ -643,7 +639,6 @@ export default {
           console.log('Continuando con la generación de la cotización...');
           
           const folio = this.$route.params.id;
-          const encodedFolio = encodeURIComponent(folio);
           
           // Preparar los datos de la factura para la cotización
           const cotizacionData = {
@@ -740,7 +735,7 @@ export default {
             console.log('Primer producto mapeado:', cotizacionData.productos[0]);
           }
 
-          const response = await fetch(`http://127.0.0.1:8000/facturas/${encodedFolio}/cotizacion-excel`, {
+          const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/facturas/${folio}/cotizacion-excel`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify(cotizacionData)
@@ -774,7 +769,7 @@ export default {
       } catch (error) {
         console.error('Error al generar cotización Excel:', error);
         if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
-          alert('❌ Error de conexión: No se pudo conectar con el servidor. Verifica que el backend esté ejecutándose en http://127.0.0.1:8000');
+          alert('❌ Error de conexión: No se pudo conectar con el servidor. Verifica que el backend esté ejecutándose en https://backend-laravel-o66e6.ondigitalocean.app');
         } else if (error.name === 'TypeError' && error.message.includes('Unexpected token')) {
           alert('❌ Error del servidor: El servidor devolvió HTML en lugar de JSON. Verifica que el backend esté funcionando correctamente.');
         } else {

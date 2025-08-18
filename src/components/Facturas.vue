@@ -59,10 +59,6 @@
 
       <!-- Botones de acción -->
       <div class="botones-accion">
-        <button class="btn-subir-pago">
-          <i class="fas fa-upload"></i>
-          ↑ Subir pago de facturas
-        </button>
         <button class="btn-reporte" @click="generarReporteFacturas" :disabled="generandoReporte">
           <i class="fas fa-file-csv"></i>
           {{ generandoReporte ? 'Generando reporte...' : 'Reporte de facturas (CSV)' }}
@@ -226,7 +222,7 @@ export default {
          async cargarFacturas() {
        this.loading = true;
        try {
-         const response = await fetch(`http://127.0.0.1:8000/facturas?anio=${this.anioSeleccionado}&pagina=${this.paginaActual}`);
+         const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/facturas?anio=${this.anioSeleccionado}&pagina=${this.paginaActual}`);
          const data = await response.json();
          
          if (data.error) {
@@ -293,8 +289,7 @@ export default {
     
          async verFactura(id) {
        try {
-         const encodedId = encodeURIComponent(id);
-         const response = await fetch(`http://127.0.0.1:8000/facturas/${encodedId}`);
+         const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/facturas/${id}`);
          const data = await response.json();
          
          if (data.error) {
@@ -312,8 +307,7 @@ export default {
     
          async verGuias(id) {
        try {
-         const encodedId = encodeURIComponent(id);
-         const response = await fetch(`http://127.0.0.1:8000/facturas/${encodedId}`);
+         const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/facturas/${id}`);
          const data = await response.json();
          
          if (data.error) {
@@ -362,7 +356,7 @@ export default {
           anio: this.anioSeleccionado
         };
 
-        const response = await fetch('http://127.0.0.1:8000/facturas/descargar-mes', {
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/facturas/descargar-mes', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -436,7 +430,7 @@ export default {
         alert('🔄 Generando reporte completo de facturas...\n\nEsto puede tomar unos segundos mientras se obtienen todas las facturas');
         
         // Primero verificar que el servidor esté funcionando
-        const testResponse = await fetch('http://127.0.0.1:8000/test-server');
+        const testResponse = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/test-server');
         if (!testResponse.ok) {
           throw new Error('El servidor no está respondiendo correctamente');
         }
@@ -450,7 +444,7 @@ export default {
 
         console.log('Enviando solicitud de reporte con filtros:', filtros);
 
-        const response = await fetch('http://127.0.0.1:8000/facturas/reporte', {
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/facturas/reporte', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

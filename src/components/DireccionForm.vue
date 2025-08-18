@@ -210,7 +210,7 @@ export default {
   methods: {
     async obtenerCSRFToken() {
       try {
-        await fetch('http://localhost:8000/sanctum/csrf-cookie', {
+        await fetch('https://backend-laravel-o66e6.ondigitalocean.app/sanctum/csrf-cookie', {
           method: 'GET',
           credentials: 'include'
         });
@@ -231,7 +231,7 @@ export default {
     },
     async cargarPaises() {
       try {
-        const response = await fetch('http://localhost:8000/carrito/paises')
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/paises')
         const data = await response.json()
         this.paises = data.paises || data
       } catch (error) {
@@ -242,7 +242,7 @@ export default {
       if (this.direccion.codigo_postal && this.direccion.codigo_postal.length === 5) {
         try {
           // Cargar estados
-          const responseEstados = await fetch(`http://localhost:8000/carrito/estados/${this.direccion.codigo_postal}`)
+          const responseEstados = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/carrito/estados/${this.direccion.codigo_postal}`)
           const dataEstados = await responseEstados.json()
           this.estados = dataEstados.estado || [];
           
@@ -253,7 +253,7 @@ export default {
           }
           
           // Cargar colonias
-          const responseColonias = await fetch(`http://localhost:8000/carrito/colonias/${this.direccion.codigo_postal}`)
+          const responseColonias = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/carrito/colonias/${this.direccion.codigo_postal}`)
           const dataColonias = await responseColonias.json()
           this.colonias = dataColonias.colonias || [];
           
@@ -270,8 +270,8 @@ export default {
       try {
         const method = this.direccion.id ? 'POST' : 'POST';
         const url = this.direccion.id 
-          ? `http://localhost:8000/carrito/direcciones/${this.direccion.id}`
-          : 'http://localhost:8000/carrito/direcciones';
+          ? `https://backend-laravel-o66e6.ondigitalocean.app/carrito/direcciones/${this.direccion.id}`
+          : 'https://backend-laravel-o66e6.ondigitalocean.app/carrito/direcciones';
         
         const headers = {
           'Content-Type': 'application/json',
@@ -312,7 +312,7 @@ export default {
           headers['X-CSRF-TOKEN'] = csrfToken;
         }
 
-        const response = await fetch(`http://localhost:8000/carrito/direcciones/${id}`, {
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/carrito/direcciones/${id}`, {
           method: 'DELETE',
           headers,
           credentials: 'include'
@@ -342,7 +342,7 @@ export default {
           headers['X-CSRF-TOKEN'] = csrfToken;
         }
 
-        const response = await fetch('http://localhost:8000/carrito/direcciones', {
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/direcciones', {
           headers,
           credentials: 'include'
         });

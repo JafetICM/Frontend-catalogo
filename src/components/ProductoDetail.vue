@@ -884,7 +884,7 @@ export default {
     // Cargar productos relacionados
     const loadProductosRelacionados = async (id) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/productos/${id}/relacionados`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/productos/${id}/relacionados`);
         if (!response.ok) throw new Error('Error al obtener productos relacionados');
         productosRelacionados.value = await response.json();
       } catch (err) {
@@ -898,7 +898,7 @@ export default {
         loadingStockSucursales.value = true;
         errorStockSucursales.value = null;
         
-        const response = await fetch(`http://127.0.0.1:8000/productos/${productoId}/stock-sucursales`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/productos/${productoId}/stock-sucursales`);
         if (!response.ok) throw new Error('Error al obtener stock por sucursal');
         
         const data = await response.json();
@@ -976,7 +976,7 @@ export default {
           return;
         }
         
-        const response = await fetch(`http://127.0.0.1:8000/productos/${id}`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/productos/${id}`);
         if (!response.ok) throw new Error('Error al obtener el producto');
         producto.value = await response.json();
         selectedImage.value = producto.value.img_portada || '';

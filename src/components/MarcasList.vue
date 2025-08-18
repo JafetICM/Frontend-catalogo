@@ -41,7 +41,7 @@ export default {
     // Obtener las marcas desde la API
     onMounted(async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/marcas');
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/marcas');
         const data = await response.json();
         marcas.value = data;
       } catch (err) {

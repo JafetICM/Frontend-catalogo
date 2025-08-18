@@ -298,7 +298,7 @@ export default {
       try {
         loading.value = true;
         error.value = null;
-        const response = await fetch(`http://127.0.0.1:8000/productos?categoria_id=${categoryId}&page=${currentPage.value}`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/productos?categoria_id=${categoryId}&page=${currentPage.value}`);
         if (!response.ok) {
           throw new Error("Error al cargar productos");
         }
@@ -315,7 +315,7 @@ export default {
 
     const loadCategory = async (categoryId) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/categorias-syscom/${categoryId}`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/categorias-syscom/${categoryId}`);
         const data = await response.json();
         selectedCategory.value = data;
       } catch (err) {

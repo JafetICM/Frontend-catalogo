@@ -522,10 +522,6 @@
 
         <!-- Botón de acción -->
         <div class="acciones-pedido">
-          <button class="btn-generar-cotizacion" @click="generarCotizacionExcel" :disabled="!puedeGenerarPedido">
-            <i class="fas fa-file-excel"></i>
-            Generar Cotización Excel
-          </button>
           <button class="btn-generar-pedido" @click="generarPedido" :disabled="!puedeGenerarPedido">
             <i class="fas fa-check-circle"></i>
             Generar Pedido
@@ -631,7 +627,7 @@ export default {
     },
     async obtenerTipoCambio() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/tipocambio');
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/tipocambio');
         const data = await response.json();
         
         // Verificar la estructura de la respuesta
@@ -660,7 +656,7 @@ export default {
     },
     async cargarDirecciones() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/carrito/direcciones')
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/direcciones')
         this.direcciones = await response.json()
       } catch (error) {
         console.error('Error al cargar direcciones:', error)
@@ -668,7 +664,7 @@ export default {
     },
     async cargarFleteras() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/carrito/fleteras')
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/fleteras')
         const data = await response.json()
         console.log('Fleteras cargadas:', data) // Para debugging
         
@@ -757,7 +753,7 @@ export default {
     },
     async cargarMetodosPago() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/carrito/pago')
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/pago')
         this.metodosPago = await response.json()
         this.metodosPagoFiltrados = [...this.metodosPago] // Inicializar métodos filtrados
       } catch (error) {
@@ -825,7 +821,7 @@ export default {
     },
     async cargarCFDI() {
       try {
-        const response = await fetch('http://127.0.0.1:8000/carrito/cfdi')
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/cfdi')
         const data = await response.json()
         
         // Verificar que los datos sean válidos
@@ -866,7 +862,7 @@ export default {
     async eliminarDireccion(id) {
       if (confirm('¿Está seguro de eliminar esta dirección?')) {
         try {
-          const response = await fetch(`http://127.0.0.1:8000/carrito/direcciones/${id}`, {
+          const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/carrito/direcciones/${id}`, {
             method: 'DELETE'
           })
           if (response.ok) {
@@ -924,7 +920,7 @@ export default {
           testmode: true
         }
 
-        const response = await fetch('http://127.0.0.1:8000/carrito/resumen', {
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/resumen', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -1013,7 +1009,7 @@ export default {
 
         console.log('Datos de cotización Excel:', cotizacionData)
 
-        const response = await fetch('http://127.0.0.1:8000/carrito/cotizacion-excel', {
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/cotizacion-excel', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -1061,7 +1057,7 @@ export default {
         console.error('Error al generar cotización Excel:', error)
         
         if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
-          alert('❌ Error de conexión: No se pudo conectar con el servidor. Verifica que el backend esté ejecutándose en http://127.0.0.1:8000')
+          alert('❌ Error de conexión: No se pudo conectar con el servidor. Verifica que el backend esté ejecutándose en https://backend-laravel-o66e6.ondigitalocean.app')
         } else if (error.name === 'TypeError' && error.message.includes('Unexpected token')) {
           alert('❌ Error del servidor: El servidor devolvió HTML en lugar de JSON. Verifica que el backend esté funcionando correctamente.')
         } else {
@@ -1135,7 +1131,7 @@ export default {
 
         console.log('Enviando datos del pedido:', pedidoData);
 
-        const response = await fetch('http://127.0.0.1:8000/carrito/generar', {
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/carrito/generar', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

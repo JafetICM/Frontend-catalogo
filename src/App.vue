@@ -223,7 +223,11 @@ export default {
           return;
         }
         
-        const response = await fetch('http://127.0.0.1:8000/categorias-syscom');
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/categorias-syscom', {
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
         const data = await response.json();
         categorias.value = data.map(cat => ({ ...cat, subcategorias: [] }));
         
@@ -271,7 +275,7 @@ export default {
           return;
         }
         
-        const response = await fetch('http://127.0.0.1:8000/marcas');
+        const response = await fetch('https://backend-laravel-o66e6.ondigitalocean.app/marcas');
         const data = await response.json();
         marcas.value = data.sort((a, b) => a.nombre.localeCompare(b.nombre));
         marcasFiltradas.value = marcas.value;
@@ -309,7 +313,7 @@ export default {
     // Función para actualizar las categorías de una marca específica
     const updateCategoriesByBrand = async (marcaId) => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/categorias-syscom?marca=${marcaId}`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/categorias-syscom?marca=${marcaId}`);
         const data = await response.json();
         categorias.value = data.map(cat => ({ ...cat, subcategorias: [] }));
       } catch (err) {
@@ -348,7 +352,7 @@ export default {
           return;
         }
         
-        const response = await fetch(`http://127.0.0.1:8000/categorias-syscom/${id}`);
+        const response = await fetch(`https://backend-laravel-o66e6.ondigitalocean.app/categorias-syscom/${id}`);
         const data = await response.json();
         
         // Guardar en cache local
