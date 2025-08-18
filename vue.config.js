@@ -2,6 +2,12 @@
 const webpack = require('webpack');
 
 module.exports = {
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      title: 'Catalogo Ahro',
+    },
+  },
   configureWebpack: {
     plugins: [
       new webpack.DefinePlugin({
